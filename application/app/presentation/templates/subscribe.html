@@ -10,28 +10,38 @@
             Get the latest tech news delivered to your inbox every week.
         </p>
 
+ {% if error %}
+<div class="form__error-banner">
+    {{ error }}
+</div>
+{% endif %}
+
         <form class="form" action="{{ url_for('public.subscribe_confirm') }}" method="POST">
             <div class="form__group">
                 <label class="form__label" for="email">Email Address *</label>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    class="form__input"
-                    placeholder="you@example.com"
-                    required
-                >
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        class="form__input {% if error %}form__input--error{% endif %}"
+                        placeholder="you@example.com"
+                        value="{{ email or '' }}"
+                        required
+                    >
+
             </div>
 
             <div class="form__group">
                 <label class="form__label" for="name">Name (optional)</label>
-                <input
+              <input
                     type="text"
                     id="name"
                     name="name"
                     class="form__input"
                     placeholder="Your name"
+                    value="{{ name or '' }}"
                 >
+
             </div>
 
             <button type="submit" class="btn btn--primary form__submit">
@@ -121,5 +131,24 @@
     .subscribe__back a:hover {
         text-decoration: underline;
     }
+
+    .form__input--error {
+    border-color: #ef4444;
+}
+
+.form__input--error:focus {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.form__error-banner {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+}
 </style>
 {% endblock %}
