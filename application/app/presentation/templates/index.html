@@ -9,30 +9,16 @@
         <p class="hero__subtitle">
             Get the latest tech news delivered straight to your inbox.
             No spam, just the stories that matter.
-        </p>
-        <button class="btn btn--primary hero__cta" id="subscribeBtn">
-            Subscribe Now
-        </button>
-    </div>
-</section>
+<a href="{{ url_for('public.subscribe') }}" class="btn btn--primary hero__cta">
+    Subscribe Now
+</a>
 
-<!-- Subscribe Modal -->
-<div class="modal-overlay" id="modalOverlay">
-    <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
-        <div class="modal__header">
-            <h2 class="modal__title" id="modalTitle">Coming Soon!</h2>
-            <button class="modal__close" id="modalClose" aria-label="Close modal">&times;</button>
-        </div>
-        <div class="modal__body">
-            <p>We're working hard to bring you the best newsletter experience.</p>
-            <p style="margin-top: 1rem;">Check back soon to subscribe!</p>
-        </div>
-    </div>
-</div>
+</section>
 {% endblock %}
 
 {% block extra_css %}
 <style>
+    /* Hero Section Styles */
     .hero {
         background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
         color: white;
@@ -96,69 +82,25 @@
             font-size: 1rem;
         }
     }
-
-    /* Modal styles */
-    .modal-overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.5);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        z-index: 1000;
-    }
-
-    .modal-overlay.active {
-        display: flex;
-    }
-
-    .modal {
-        background: white;
-        padding: 2rem;
-        border-radius: 8px;
-        max-width: 500px;
-        width: 90%;
-        box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-        text-align: center;
-    }
-
-    .modal__header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1rem;
-    }
-
-    .modal__close {
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        cursor: pointer;
-    }
 </style>
 {% endblock %}
 
 {% block scripts %}
 <script>
-    // Modal functionality
-    const subscribeBtn = document.getElementById('subscribeBtn');
-    const modalOverlay = document.getElementById('modalOverlay');
-    const modalClose = document.getElementById('modalClose');
-
     // Open modal
-    subscribeBtn.addEventListener('click', () => {
+    subscribeBtn.addEventListener('click', function() {
         modalOverlay.classList.add('active');
         modalClose.focus();
     });
 
     // Close modal - close button
-    modalClose.addEventListener('click', () => {
+    modalClose.addEventListener('click', function() {
         modalOverlay.classList.remove('active');
         subscribeBtn.focus();
     });
 
     // Close modal - click outside modal
-    modalOverlay.addEventListener('click', (event) => {
+    modalOverlay.addEventListener('click', function(event) {
         if (event.target === modalOverlay) {
             modalOverlay.classList.remove('active');
             subscribeBtn.focus();
@@ -166,7 +108,7 @@
     });
 
     // Close modal - Escape key
-    document.addEventListener('keydown', (event) => {
+    document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape' && modalOverlay.classList.contains('active')) {
             modalOverlay.classList.remove('active');
             subscribeBtn.focus();
