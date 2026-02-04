@@ -12,3 +12,6 @@ build/
 .pytest_cache/
 .coverage
 htmlcov/
+.azure-config.azure-config
+echo ".database-url" 
+echo ".secret-key"

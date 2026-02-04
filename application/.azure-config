@@ -1,0 +1,18 @@
+RESOURCE_GROUP="rg-news-flash"
+ACR_NAME="acrnewsflash1ce200af"
+LOCATION="swedencentral"
+CAE_NAME="cae-news-flash"
+CA_NAME="ca-news-flash"
+
+cat >> .azure-config << EOF
+SQL_SERVER="$SQL_SERVER"
+SQL_PASSWORD="$SQL_PASSWORD"
+EOF
+SQL_SERVER="sql-news-flash-tobias-1"
+SQL_PASSWORD=""
+SQL_SERVER="sql-news-flash-tobias-1"
+SQL_PASSWORD="ChangeMe!12345Strong"
+SQL_SERVER="sql-news-flash-tobias-1"
+SQL_PASSWORD=""
+SQL_SERVER="sql-news-flash-tobias-1"
+SQL_PASSWORD="ChangeMe!12345Strong"
